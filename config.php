@@ -17,6 +17,7 @@ define('DIR_DOWNLOAD', '/remus/www/epliante/public_html/system/storage/download/
 define('DIR_LOGS', '/remus/www/epliante/public_html/system/storage/logs/');
 define('DIR_MODIFICATION', '/remus/www/epliante/public_html/system/storage/modification/');
 define('DIR_UPLOAD', '/remus/www/epliante/public_html/system/storage/upload/');
+define('THEME', HTTP_SERVER.'/catalog/view/theme/epliante/image');
 
 // DB
 define('DB_DRIVER', 'mysqli');

@@ -2,9 +2,13 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
 	color: #666;
-	font-size: 12px;
+	font-size: 16px;
 	line-height: 20px;
 	width: 100%;
+        
+        background-image: url('../image/bg-image.jpg');
+        background-repeat: no-repeat;
+        background-attachment: contain;
 }
 h1, h2, h3, h4, h5, h6 {
 	color: #444;
@@ -69,40 +73,18 @@ div.required .control-label:before {
 	color: #F00;
 	font-weight: bold;
 }
-/* Gradent to all drop down menus */
-.dropdown-menu li > a:hover {
-	text-decoration: none;
-	color: #ffffff;
-	background-color: #229ac8;
-	background-image: linear-gradient(to bottom, #23a1d1, #1f90bb);
-	background-repeat: repeat-x;
-}
 /* top */
 #top {
-	background-color: #EEEEEE;
-	border-bottom: 1px solid #e2e2e2;
+	color: #e66200;
+	background-color: #03274a;
 	padding: 4px 0px 3px 0;
-	margin: 0 0 20px 0;
 	min-height: 40px;
 }
 #top .container {
 	padding: 0 20px;
 }
-#top #form-currency .currency-select,
-#top #form-language .language-select {
-	text-align: left;
-}
-#top #form-currency .currency-select:hover,
-#top #form-language .language-select:hover {
-	text-shadow: none;
-	color: #ffffff;
-	background-color: #229ac8;
-	background-image: linear-gradient(to bottom, #23a1d1, #1f90bb);
-	background-repeat: repeat-x;
-}
-#top .btn-link, #top-links li, #top-links a {
-	color: #888;
-	text-shadow: 0 1px 0 #FFF;
+#top a {
+	color: #e66200;
 	text-decoration: none;
 }
 #top .btn-link:hover, #top-links a:hover {
@@ -120,93 +102,43 @@ div.required .control-label:before {
 }
 #top-links {
 	padding-top: 6px;
+        font-size: 14px;
 }
 #top-links a + a {
-	margin-left: 15px;
+	margin-left: 15px;     
 }
 /* logo */
 #logo {
-	margin: 0 0 10px 0;
-}
-/* search */
-#search {
-	margin-bottom: 10px;
-}
-#search .input-lg {
-	height: 40px;
-	line-height: 20px;
-	padding: 0 10px;
-}
-#search .btn-lg {
-	font-size: 15px;
-	line-height: 18px;
-	padding: 10px 35px;
-	text-shadow: 0 1px 0 #FFF;
-}
-/* cart */
-#cart {
-	margin-bottom: 10px;
-}
-#cart > .btn {
-	font-size: 12px;
-	line-height: 18px;
-	color: #FFF;
-}
-#cart.open > .btn {
-	background-image: none;
-	background-color: #FFFFFF;
-	border: 1px solid #E6E6E6;
-	color: #666;
-	box-shadow: none;
-	text-shadow: none;
-}
-#cart.open > .btn:hover {
-	color: #444;
-}
-#cart .dropdown-menu {
-	background: #eee;
-	z-index: 1001;
-}
-#cart .dropdown-menu {
-	min-width: 100%;
-}
-@media (max-width: 478px) {
-	#cart .dropdown-menu {
-		width: 100%;
-	}
-}
-#cart .dropdown-menu table {
-	margin-bottom: 10px;
-}
-#cart .dropdown-menu li > div {
-	min-width: 427px;
-	padding: 0 10px;
-}
-@media (max-width: 478px) {
-	#cart .dropdown-menu li > div {
-		min-width: 100%;
-	}
-}
-#cart .dropdown-menu li p {
-	margin: 20px 0;
+    width: 240px;
+    margin: 0 auto 20px auto;
 }
 /* menu */
-#menu {
-	background-color: #229ac8;
-	background-image: linear-gradient(to bottom, #23a1d1, #1f90bb);
-	background-repeat: repeat-x;
-	border-color: #1f90bb #1f90bb #145e7a;
-	min-height: 40px;
+.navbar {
+    min-height: initial!important; 
+    margin-bottom: 0!important;
 }
+@media (min-width: 768px) {
+    .navbar .navbar-nav {
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+    }
+
+    .navbar .navbar-collapse {
+        text-align: center;
+    }
+}
+
 #menu .nav > li > a {
 	color: #fff;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 	padding: 10px 15px 10px 15px;
+        margin: 0 10px;
 	min-height: 15px;
 	background-color: transparent;
+        border-radius: 3px;
 }
 #menu .nav > li > a:hover, #menu .nav > li.open > a {
-	background-color: rgba(0, 0, 0, 0.1);
+	background-color: #e66200;
 }
 #menu .dropdown-menu {
 	padding-bottom: 0;
@@ -312,10 +244,10 @@ div.required .control-label:before {
 /* footer */
 footer {
 	margin-top: 30px;
-	padding-top: 30px;
-	background-color: #303030;
-	border-top: 1px solid #ddd;
-	color: #e2e2e2;
+	padding: 30px 0;
+	background-color: #021e39;
+	color: #54acf3;
+        font-size: 14px;
 }
 footer hr {
 	border-top: none;
@@ -746,4 +678,20 @@ h2.price {
 .btn-info:hover, .btn-info:active, .btn-info.active, .btn-info.disabled, .btn-info[disabled] {
     background-image: none;
     background-color: #df5c39;
+}
+
+/* Carousel styles */ 
+.owl-carousel {
+    background: none!important;
+    box-shadow: none!important;
+    border: none!important;
+}
+.owl-wrapper-outer {
+    border: none!important;    
+}
+
+/* Featured Boxes */
+.box {
+    float: left;
+    width: 25%;
 }
