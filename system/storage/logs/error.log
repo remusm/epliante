@@ -1,0 +1,22 @@
+2017-01-09 2:08:03 - PHP Warning:  unlink(/remus/www/epliante/public_html/system/storage/cache/cache.store.1483923944): Permission denied in /remus/www/epliante/public_html/system/library/cache/file.php on line 68
+2017-01-09 2:08:03 - PHP Warning:  fopen(/remus/www/epliante/public_html/system/storage/cache/cache.store.1483924083): failed to open stream: Permission denied in /remus/www/epliante/public_html/system/library/cache/file.php on line 49
+2017-01-09 2:08:03 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /remus/www/epliante/public_html/system/library/cache/file.php on line 51
+2017-01-09 2:08:03 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /remus/www/epliante/public_html/system/library/cache/file.php on line 53
+2017-01-09 2:08:03 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in /remus/www/epliante/public_html/system/library/cache/file.php on line 55
+2017-01-09 2:08:03 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /remus/www/epliante/public_html/system/library/cache/file.php on line 57
+2017-01-09 2:08:03 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /remus/www/epliante/public_html/system/library/cache/file.php on line 59
+2017-01-09 2:08:03 - PHP Warning:  unlink(/remus/www/epliante/public_html/system/storage/cache/cache.store.1483923944): Permission denied in /remus/www/epliante/public_html/system/library/cache/file.php on line 68
+2017-01-09 2:08:03 - PHP Warning:  fopen(/remus/www/epliante/public_html/system/storage/cache/cache.store.1483924083): failed to open stream: Permission denied in /remus/www/epliante/public_html/system/library/cache/file.php on line 49
+2017-01-09 2:08:03 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /remus/www/epliante/public_html/system/library/cache/file.php on line 51
+2017-01-09 2:08:03 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /remus/www/epliante/public_html/system/library/cache/file.php on line 53
+2017-01-09 2:08:03 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in /remus/www/epliante/public_html/system/library/cache/file.php on line 55
+2017-01-09 2:08:03 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /remus/www/epliante/public_html/system/library/cache/file.php on line 57
+2017-01-09 2:08:03 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /remus/www/epliante/public_html/system/library/cache/file.php on line 59
+2017-01-09 2:08:23 - PHP Warning:  imagepng(/remus/www/epliante/public_html/image/cache/no_image-40x40.png): failed to open stream: Permission denied in /remus/www/epliante/public_html/system/library/image.php on line 66
+2017-01-09 2:08:34 - PHP Warning:  imagepng(/remus/www/epliante/public_html/image/cache/no_image-40x40.png): failed to open stream: Permission denied in /remus/www/epliante/public_html/system/library/image.php on line 66
+2017-01-09 2:08:50 - PHP Warning:  imagepng(/remus/www/epliante/public_html/image/cache/no_image-40x40.png): failed to open stream: Permission denied in /remus/www/epliante/public_html/system/library/image.php on line 66
+2017-01-09 2:08:57 - PHP Warning:  imagepng(/remus/www/epliante/public_html/image/cache/no_image-40x40.png): failed to open stream: Permission denied in /remus/www/epliante/public_html/system/library/image.php on line 66
+2017-01-09 2:09:18 - PHP Warning:  imagepng(/remus/www/epliante/public_html/image/cache/no_image-40x40.png): failed to open stream: Permission denied in /remus/www/epliante/public_html/system/library/image.php on line 66
+2017-01-09 2:09:28 - PHP Warning:  imagepng(/remus/www/epliante/public_html/image/cache/no_image-40x40.png): failed to open stream: Permission denied in /remus/www/epliante/public_html/system/library/image.php on line 66
+2017-01-09 2:09:48 - PHP Warning:  imagepng(/remus/www/epliante/public_html/image/cache/no_image-40x40.png): failed to open stream: Permission denied in /remus/www/epliante/public_html/system/library/image.php on line 66
+2017-01-09 2:10:38 - PHP Warning:  imagepng(/remus/www/epliante/public_html/image/cache/no_image-40x40.png): failed to open stream: Permission denied in /remus/www/epliante/public_html/system/library/image.php on line 66
