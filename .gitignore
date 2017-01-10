@@ -5,11 +5,12 @@ admin/config.php
 !index.html
 
 download/
+image/catalog/
 image/data/
 image/cache/
 system/cache/
 system/logs/
-
+catalog/view/theme/epliante/image/
 system/storage/
 
 # vQmod log files

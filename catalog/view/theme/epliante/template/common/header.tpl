@@ -43,7 +43,7 @@
     <?php echo $language; ?>
     <div id="top-links" class="nav pull-right">
       <ul class="list-inline">
-        <li><a href="<?php echo $contact; ?>"><i class="fa fa-phone"></i></a> <span class="hidden-xs hidden-sm hidden-md">Informatii si comenzi: <?php echo $telephone; ?></span></li>
+        <li><a href="<?php echo $contact; ?>"><i class="fa fa-phone"></i></a> <span>Informatii si comenzi: <?php echo $telephone; ?></span></li>
       </ul>
     </div>
   </div>
@@ -54,7 +54,7 @@
       <div class="col-sm-12">
         <div id="logo">
           <?php if ($logo) { ?>
-          <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
+          <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a>
           <?php } else { ?>
           <h1><a href="<?php echo $home; ?>"><?php echo $name; ?></a></h1>
           <?php } ?>
@@ -92,6 +92,6 @@
       </ul>
     </div>
   </nav>
-    <hr style="border-top: 3px solid #266ba5;margin-top:0.5em;">
+    <hr class="divider-line">
 </div>
 <?php } ?>
