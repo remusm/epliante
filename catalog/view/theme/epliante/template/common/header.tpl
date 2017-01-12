@@ -40,7 +40,6 @@
 <body class="<?php echo $class; ?>">
 <nav id="top">
   <div class="container">
-    <?php echo $language; ?>
     <div id="top-links" class="nav pull-right">
       <ul class="list-inline">
         <li><a href="<?php echo $contact; ?>"><i class="fa fa-phone"></i></a> <span>Informatii si comenzi: <?php echo $telephone; ?></span></li>
@@ -74,12 +73,12 @@
         
         <?php
             $tabModele = $tabDistributie = $tabComanda = $tabPortofoliu = $tabDespre = $tabContact = ''; 
-            if ("$_SERVER[REQUEST_URI]" === '/modele-flyere.html') $tabModele = 'active activat'; 
-            if ("$_SERVER[REQUEST_URI]" === '/distributie-flyere.html') $tabPortofoliu = 'active activat';
-            if ("$_SERVER[REQUEST_URI]" === '/comanda-online-flyere.html') $tabComanda = 'active activat';
-            if ("$_SERVER[REQUEST_URI]" === '/portofoliu.html') $tabPortofoliu = 'active activat';
-            if ("$_SERVER[REQUEST_URI]" === '/despre-noi.html') $tabDespre = 'active activat';
-            if ("$_SERVER[REQUEST_URI]" === '/contact.html') $tabContact = 'active activat';
+            if ($_SERVER['REQUEST_URI'] === '/modele-pliante.html') $tabModele = 'active activat'; 
+            if ($_SERVER['REQUEST_URI'] === '/distributie-flyere.html') $tabPortofoliu = 'active activat';
+            if ($_SERVER['REQUEST_URI'] === '/comanda-online-flyere.html') $tabComanda = 'active activat';
+            if ($_SERVER['REQUEST_URI'] === '/portofoliu.html') $tabPortofoliu = 'active activat';
+            if ($_SERVER['REQUEST_URI'] === '/despre-noi.html') $tabDespre = 'active activat';
+            if ($_SERVER['REQUEST_URI'] === '/contact.html') $tabContact = 'active activat';
         ?>
 
         <li class="fth2 <?php echo $tabModele;?>"><a href="<?php print HTTP_SERVER; ?>modele-pliante.html">MODELE</a></li>

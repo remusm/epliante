@@ -2,6 +2,7 @@
 // HTTP
 define('HTTP_SERVER', 'http://e-pliante.avantondigital.com/admin/');
 define('HTTP_CATALOG', 'http://e-pliante.avantondigital.com/');
+define('HTTP_IMAGE', 'http://e-pliante.avantondigital.com/image/');
 
 // HTTPS
 define('HTTPS_SERVER', 'http://e-pliante.avantondigital.com/admin/');

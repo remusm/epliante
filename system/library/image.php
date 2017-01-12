@@ -110,7 +110,7 @@ class Image {
 			$background = imagecolorallocatealpha($this->image, 255, 255, 255, 127);
 			imagecolortransparent($this->image, $background);
 		} else {
-			$background = imagecolorallocatealpha($this->image, 255, 255, 255, 127);
+			$background = imagecolorallocate($this->image, 255, 255, 255);
 		}
 
 		imagefilledrectangle($this->image, 0, 0, $width, $height, $background);
