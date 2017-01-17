@@ -5,7 +5,7 @@ $_['heading_title']  = 'Contactează-ne';
 // Text
 $_['text_location']  = 'Locația noastră';
 $_['text_store']     = 'Magazinele noastre fizice';
-$_['text_contact']   = 'Formular de contact';
+$_['text_contact']   = 'Formular de upload';
 $_['text_address']   = 'Adresă:';
 $_['text_telephone'] = 'Telefon:';
 $_['text_fax']       = 'Fax:';

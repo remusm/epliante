@@ -1,13 +1,31 @@
 <?php
-class ControllerInformationContact extends Controller {
+/*class ControllerExtensionModuleContact extends Controller {
+	public function index($setting) {
+            static $module = 0;
+            
+            // define children templates
+            $this->children = array(
+              'common/column_left',
+              'common/column_right',
+              'common/content_top',
+              'common/content_bottom',
+              'common/footer',
+              'common/header'
+            );
+            
+            $data['module'] = $module++;
+
+            return $this->load->view('extension/module/contact', $data);
+	}
+}
+*/
+class ControllerExtensionModuleContact extends Controller {
 	private $error = array();
 
 	public function index() {
-		$this->load->language('information/contact');
+		$this->load->language('module/contact');
 
 		$this->document->setTitle($this->language->get('heading_title'));
-                                
-		$this->document->addScript('catalog/view/javascript/contact-form-validation.js');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$mail = new Mail();
@@ -22,35 +40,13 @@ class ControllerInformationContact extends Controller {
 			$mail->setTo($this->config->get('config_email'));
 			$mail->setFrom($this->request->post['email']);
 			$mail->setSender(html_entity_decode($this->request->post['name'], ENT_QUOTES, 'UTF-8'));
-			$mail->setSubject(html_entity_decode(sprintf('Solicitare contact e-pliante.ro'), ENT_QUOTES, 'UTF-8'));
-			$mail->setText('Nume vizitator: '.$this->request->post['name']."\r\n".'Nume firma: '.$this->request->post['company']."\r\n".'Telefon: '.$this->request->post['phone']."\r\n".'Solicitare: '.$this->request->post['enquiry']);
-			
-                        try {
-                            $mail->send();
-                            // Set a 200 (okay) response code.
-                            
-                            echo 'Mesajul tău a fost trimis cu succes către administratorul site-ului!';
-                            //$this->response->redirect($this->url->link('information/contact/success'));
-                        }
-                          //catch exception
-                        catch(Exception $e) {
-                            // Set a 500 (internal server error) response code.
-                            http_response_code(500);
-                            echo "Datorita unei erori mesajul dumneavoastra nu s-a trimis. Va rugam sa incercati mai tarziu. Va multumim.";
-                        }
+			$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name']), ENT_QUOTES, 'UTF-8'));
+			$mail->setText($this->request->post['enquiry']);
+			$mail->send();
+
+			$this->response->redirect($this->url->link('information/contact/success'));                            
 		}
 
-		$data['breadcrumbs'] = array();
-
-		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('common/home')
-		);
-
-		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('information/contact')
-		);
 
 		$data['heading_title'] = $this->language->get('heading_title');
 
@@ -64,8 +60,6 @@ class ControllerInformationContact extends Controller {
 		$data['text_comment'] = $this->language->get('text_comment');
 
 		$data['entry_name'] = $this->language->get('entry_name');
-		$data['entry_company'] = $this->language->get('entry_company');
-		$data['entry_phone'] = $this->language->get('entry_phone');
 		$data['entry_email'] = $this->language->get('entry_email');
 		$data['entry_enquiry'] = $this->language->get('entry_enquiry');
 
@@ -75,18 +69,6 @@ class ControllerInformationContact extends Controller {
 			$data['error_name'] = $this->error['name'];
 		} else {
 			$data['error_name'] = '';
-		}
-                
-		if (isset($this->error['company'])) {
-			$data['error_company'] = $this->error['company'];
-		} else {
-			$data['error_company'] = '';
-		}
-                                
-		if (isset($this->error['phone'])) {
-			$data['error_phone'] = $this->error['phone'];
-		} else {
-			$data['error_phone'] = '';
 		}
 
 		if (isset($this->error['email'])) {
@@ -102,8 +84,8 @@ class ControllerInformationContact extends Controller {
 		}
 
 		$data['button_submit'] = $this->language->get('button_submit');
-
-		$data['action'] = $this->url->link('information/contact', '', true);
+                
+		$data['action'] = $this->url->link('extension/module/contact', '', true);
 
 		$this->load->model('tool/image');
 
@@ -156,18 +138,6 @@ class ControllerInformationContact extends Controller {
 			$data['name'] = $this->customer->getFirstName();
 		}
 
-		if (isset($this->request->post['company'])) {
-			$data['company'] = $this->request->post['company'];
-		} else {
-			$data['company'] = $this->customer->getFirstName();
-		}      
-                
-		if (isset($this->request->post['phone'])) {
-			$data['phone'] = $this->request->post['phone'];
-		} else {
-			$data['phone'] = $this->customer->getFirstName();
-		}           
-
 		if (isset($this->request->post['email'])) {
 			$data['email'] = $this->request->post['email'];
 		} else {
@@ -187,29 +157,15 @@ class ControllerInformationContact extends Controller {
 			$data['captcha'] = '';
 		}
 
-		$data['column_left'] = $this->load->controller('common/column_left');
-		$data['column_right'] = $this->load->controller('common/column_right');
-		$data['content_top'] = $this->load->controller('common/content_top');
-		$data['content_bottom'] = $this->load->controller('common/content_bottom');
-		$data['footer'] = $this->load->controller('common/footer');
-		$data['header'] = $this->load->controller('common/header');
+
+		$this->response->setOutput($this->load->view('extension/module/contact', $data));
                 
-                if (($this->request->server['REQUEST_METHOD'] == 'POST')) {
-                    if (isset($this->error['name'])) {  
-                        //http_response_code(400);
-                        //echo 'Aveti erori la nume';
-                        $this->response->setOutput($this->load->view('information/contact', $data));
-                    }
-                }
-                else $this->response->setOutput($this->load->view('information/contact', $data));
+                return $this->load->view('extension/module/contact', $data);
 	}
 
 	protected function validate() {
 		if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 32)) {
 			$this->error['name'] = $this->language->get('error_name');
-		}
-		if ((utf8_strlen($this->request->post['phone']) < 3) || (utf8_strlen($this->request->post['phone']) > 15)) {
-			$this->error['phone'] = $this->language->get('error_phone');
 		}
 
 		if (!filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL)) {
@@ -236,18 +192,6 @@ class ControllerInformationContact extends Controller {
 		$this->load->language('information/contact');
 
 		$this->document->setTitle($this->language->get('heading_title'));
-
-		$data['breadcrumbs'] = array();
-
-		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('common/home')
-		);
-
-		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('information/contact')
-		);
 
 		$data['heading_title'] = $this->language->get('heading_title');
 

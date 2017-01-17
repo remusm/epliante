@@ -1,9 +1,9 @@
 <?php
-class ControllerInformationContact extends Controller {
+class ControllerInformationUploadform extends Controller {
 	private $error = array();
 
 	public function index() {
-		$this->load->language('information/contact');
+		$this->load->language('information/uploadform');
 
 		$this->document->setTitle($this->language->get('heading_title'));
                                 
@@ -49,7 +49,7 @@ class ControllerInformationContact extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('information/contact')
+			'href' => $this->url->link('information/uploadform')
 		);
 
 		$data['heading_title'] = $this->language->get('heading_title');
@@ -103,7 +103,7 @@ class ControllerInformationContact extends Controller {
 
 		$data['button_submit'] = $this->language->get('button_submit');
 
-		$data['action'] = $this->url->link('information/contact', '', true);
+		$data['action'] = $this->url->link('information/uploadform', '', true);
 
 		$this->load->model('tool/image');
 
@@ -198,10 +198,10 @@ class ControllerInformationContact extends Controller {
                     if (isset($this->error['name'])) {  
                         //http_response_code(400);
                         //echo 'Aveti erori la nume';
-                        $this->response->setOutput($this->load->view('information/contact', $data));
+                        $this->response->setOutput($this->load->view('information/uploadform', $data));
                     }
                 }
-                else $this->response->setOutput($this->load->view('information/contact', $data));
+                else $this->response->setOutput($this->load->view('information/uploadform', $data));
 	}
 
 	protected function validate() {
@@ -233,7 +233,7 @@ class ControllerInformationContact extends Controller {
 	}
 
 	public function success() {
-		$this->load->language('information/contact');
+		$this->load->language('information/uploadform');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -246,7 +246,7 @@ class ControllerInformationContact extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('information/contact')
+			'href' => $this->url->link('information/uploadform')
 		);
 
 		$data['heading_title'] = $this->language->get('heading_title');

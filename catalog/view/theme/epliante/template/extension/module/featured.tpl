@@ -1,19 +1,19 @@
 <div class="box-left">
-  <h2><a href="<?php echo $product['href']; ?>">Pliante</a></h2>
+  <h2><a href=" ">Pliante</a></h2>
   <img src="<?php echo THEME;?>/pliante-icon.png">
   <p class="featured-text">Mauris accuml dia in lacus edipiscng aliqIn pdeiquetsit amet euis inuctor ut liguliquam dapibus tindu.</p>
   <p><a class="buton-detalii" href="">VEZI DETALII</a></p>
 </div>
 
 <div class="box-middle">
-  <h2><a href="<?php echo $product['href']; ?>">Flyere</a></h2>
+  <h2><a href=" ">Flyere</a></h2>
   <img src="<?php echo THEME;?>/flyere-icon.png">
   <p class="featured-text">Mauris accuml dia in lacus edipiscng aliqIn pdeiquetsit amet euis inuctor ut liguliquam dapibus tindu.</p>
   <p><a class="buton-detalii" href="">VEZI DETALII</a></p>
 </div>
 
 <div class="box-right">
-  <h2><a href="<?php echo $product['href']; ?>">Distributie</a></h2>
+  <h2><a href=" ">Distributie</a></h2>
   <img src="<?php echo THEME;?>/distributie-icon.png">
   <p class="featured-text">Mauris accuml dia in lacus edipiscng aliqIn pdeiquetsit amet euis inuctor ut liguliquam dapibus tindu.</p>
   <p><a class="buton-detalii" href="">VEZI DETALII</a></p>

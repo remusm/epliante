@@ -834,3 +834,29 @@ h2.price {
 .img-margin {
     margin: 10px 0;
 }
+
+/* WARNINGS */
+.text-danger {
+    color: #f37c05;
+}
+.error {
+    color: #f37c05;
+    font-size: 14px;
+}
+.alert-success {
+    background-color: #65aa65;
+    color: #fff;
+    border-color: #65aa65;
+}
+.alert-danger {
+    background-color: #f15b5b;
+    color: #fff;
+    border-color: #f15b5b;
+}
+.has-error .control-label {
+    color: #f37c05!important;
+}
+
+div.required .control-label:before {
+    color: #f37c05!important;
+}

@@ -15,9 +15,7 @@ $_['text_success']   = '<p>Mesajul tău a fost trimis cu succes către administr
 
 // Entry
 $_['entry_name']     = 'Nume';
-$_['entry_company']     = 'Nume firma';
 $_['entry_email']    = 'E-Mail';
-$_['entry_phone']     = 'Telefon';
 $_['entry_enquiry']  = 'Mesaj';
 $_['entry_captcha']  = 'Introdu codul din imagine';
 
@@ -26,8 +24,6 @@ $_['email_subject']  = 'Mesaj %s';
 
 // Errors
 $_['error_name']     = 'Numele trebuie să conțină între 1 și 32 de caractere!';
-$_['error_company']     = 'Numele firmei trebuie să conțină între 1 și 32 de caractere!';
 $_['error_email']    = 'Adresa de e-mail nu este validă!';
-$_['error_phone']    = 'Numarul de telefon nu este valid!';
 $_['error_enquiry']  = 'Mesajul trebuie să conțină între 10 și 3000 de caractere!';
 $_['error_captcha']  = 'Codul de verificare este greșit!';
