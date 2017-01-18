@@ -1,15 +1,17 @@
 <?php
 class ControllerInformationUploadform extends Controller {
 	private $error = array();
+        private $uploadedFile;
 
 	public function index() {
 		$this->load->language('information/uploadform');
 
 		$this->document->setTitle($this->language->get('heading_title'));
                                 
-		$this->document->addScript('catalog/view/javascript/contact-form-validation.js');
+		$this->document->addScript('catalog/view/javascript/order-form-validation.js');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+                    
 			$mail = new Mail();
 			$mail->protocol = $this->config->get('config_mail_protocol');
 			$mail->parameter = $this->config->get('config_mail_parameter');
@@ -23,20 +25,53 @@ class ControllerInformationUploadform extends Controller {
 			$mail->setFrom($this->request->post['email']);
 			$mail->setSender(html_entity_decode($this->request->post['name'], ENT_QUOTES, 'UTF-8'));
 			$mail->setSubject(html_entity_decode(sprintf('Solicitare contact e-pliante.ro'), ENT_QUOTES, 'UTF-8'));
-			$mail->setText('Nume vizitator: '.$this->request->post['name']."\r\n".'Nume firma: '.$this->request->post['company']."\r\n".'Telefon: '.$this->request->post['phone']."\r\n".'Solicitare: '.$this->request->post['enquiry']);
+                        
+			//$mail->setText('Nume client: '.$this->request->post['name']."\r\n".'Telefon: '.$this->request->post['phone']."\r\n".'Adresa livrare: '.$this->request->post['delivery']."\r\n".'Comanda: '.$this->request->post['order']);
 			
+                        if (isset($_POST['newsletter'])) $newsletter = 'da';
+                        else $newsletter = 'nu';
+                        
+                        if ($_POST['optradio'] == 'fizica') {
+                            $mailBody =
+                                'Nume client: '.$this->request->post['name']."\r\n".
+                                'Telefon: '.$this->request->post['phone']."\r\n".
+                                'Adresa livrare: '.$this->request->post['delivery']."\r\n".
+                                'Comanda: '.$this->request->post['order']."\r\n".
+                                'Newsletter: '.$newsletter;
+                        }
+                        
+                        if ($_POST['optradio'] == 'juridica') {                        
+                            $mailBody = 
+                                'Nume client: '.$this->request->post['name']."\r\n".
+                                'Telefon: '.$this->request->post['phone']."\r\n".
+                                'Adresa livrare: '.$this->request->post['delivery']."\r\n".
+                                'Comanda: '.$this->request->post['order']."\r\n".
+                                'Denumire firma: '.$this->request->post['company']."\r\n".
+                                'Reg. Com.: '.$this->request->post['regcom']."\r\n".
+                                'CIF: '.$this->request->post['cif']."\r\n".
+                                'Adresa: '.$this->request->post['adresafirma']."\r\n".
+                                'Oras: '.$this->request->post['oras']."\r\n".
+                                'Judet: '.$this->request->post['judet']."\r\n".
+                                'IBAN: '.$this->request->post['iban']."\r\n".
+                                'Banca: '.$this->request->post['banca']."\r\n".
+                                'Newsletter: '.$newsletter;
+                        }
+                        $mail->setText($mailBody);
+			
+                        
                         try {
                             $mail->send();
-                            // Set a 200 (okay) response code.
-                            
+                            // Set a 200 (okay) response code.                            
                             echo 'Mesajul tău a fost trimis cu succes către administratorul site-ului!';
-                            //$this->response->redirect($this->url->link('information/contact/success'));
                         }
                           //catch exception
                         catch(Exception $e) {
                             // Set a 500 (internal server error) response code.
                             http_response_code(500);
                             echo "Datorita unei erori mesajul dumneavoastra nu s-a trimis. Va rugam sa incercati mai tarziu. Va multumim.";
+                            // delete the file if the email is not sent
+                            if (isset($this->uploadedFile))
+                                unlink(DIR_UPLOAD.$this->uploadedFile);
                         }
 		}
 
@@ -64,10 +99,20 @@ class ControllerInformationUploadform extends Controller {
 		$data['text_comment'] = $this->language->get('text_comment');
 
 		$data['entry_name'] = $this->language->get('entry_name');
-		$data['entry_company'] = $this->language->get('entry_company');
+		$data['entry_order'] = $this->language->get('entry_order');
 		$data['entry_phone'] = $this->language->get('entry_phone');
 		$data['entry_email'] = $this->language->get('entry_email');
-		$data['entry_enquiry'] = $this->language->get('entry_enquiry');
+		$data['entry_delivery'] = $this->language->get('entry_delivery');
+		$data['entry_order'] = $this->language->get('entry_order');
+		$data['entry_company'] = $this->language->get('entry_company');
+                $data['entry_regcom']  = $this->language->get('entry_regcom');
+                $data['entry_cif']  = $this->language->get('entry_cif');
+                $data['entry_adresafirma']  = $this->language->get('entry_adresafirma');
+                $data['entry_oras']  = $this->language->get('entry_oras');
+                $data['entry_judet']  = $this->language->get('entry_judet');
+                $data['entry_iban']  = $this->language->get('entry_iban');
+                $data['entry_banca']  = $this->language->get('entry_banca');
+                $data['entry_fisier']  = $this->language->get('entry_fisier');
 
 		$data['button_map'] = $this->language->get('button_map');
 
@@ -77,10 +122,10 @@ class ControllerInformationUploadform extends Controller {
 			$data['error_name'] = '';
 		}
                 
-		if (isset($this->error['company'])) {
-			$data['error_company'] = $this->error['company'];
+		if (isset($this->error['order'])) {
+			$data['error_order'] = $this->error['order'];
 		} else {
-			$data['error_company'] = '';
+			$data['error_order'] = '';
 		}
                                 
 		if (isset($this->error['phone'])) {
@@ -95,10 +140,70 @@ class ControllerInformationUploadform extends Controller {
 			$data['error_email'] = '';
 		}
 
-		if (isset($this->error['enquiry'])) {
-			$data['error_enquiry'] = $this->error['enquiry'];
+		if (isset($this->error['delivery'])) {
+			$data['error_delivery'] = $this->error['delivery'];
 		} else {
-			$data['error_enquiry'] = '';
+			$data['error_delivery'] = '';
+		}
+
+		if (isset($this->error['order'])) {
+			$data['error_order'] = $this->error['order'];
+		} else {
+			$data['error_order'] = '';
+		}    
+                                
+		if (isset($this->error['company'])) {
+			$data['error_company'] = $this->error['company'];
+		} else {
+			$data['error_company'] = '';
+		}            
+                
+		if (isset($this->error['regcom'])) {
+			$data['error_regcom'] = $this->error['regcom'];
+		} else {
+			$data['error_regcom'] = '';
+		}       
+                
+		if (isset($this->error['cif'])) {
+			$data['error_cif'] = $this->error['cif'];
+		} else {
+			$data['error_cif'] = '';
+		}       
+                
+		if (isset($this->error['adresafirma'])) {
+			$data['error_adresafirma'] = $this->error['adresafirma'];
+		} else {
+			$data['error_adresafirma'] = '';
+		}    
+                
+		if (isset($this->error['oras'])) {
+			$data['error_oras'] = $this->error['oras'];
+		} else {
+			$data['error_oras'] = '';
+		} 
+                
+		if (isset($this->error['judet'])) {
+			$data['error_judet'] = $this->error['judet'];
+		} else {
+			$data['error_judet'] = '';
+		}
+                
+		if (isset($this->error['iban'])) {
+			$data['error_iban'] = $this->error['iban'];
+		} else {
+			$data['error_iban'] = '';
+		}
+                
+		if (isset($this->error['banca'])) {
+			$data['error_banca'] = $this->error['banca'];
+		} else {
+			$data['error_banca'] = '';
+		}
+                
+                if (isset($this->error['fisier'])) {
+			$data['error_fisier'] = $this->error['fisier'];
+		} else {
+			$data['error_fisier'] = '';
 		}
 
 		$data['button_submit'] = $this->language->get('button_submit');
@@ -154,18 +259,12 @@ class ControllerInformationUploadform extends Controller {
 			$data['name'] = $this->request->post['name'];
 		} else {
 			$data['name'] = $this->customer->getFirstName();
-		}
-
-		if (isset($this->request->post['company'])) {
-			$data['company'] = $this->request->post['company'];
-		} else {
-			$data['company'] = $this->customer->getFirstName();
-		}      
+		}   
                 
 		if (isset($this->request->post['phone'])) {
 			$data['phone'] = $this->request->post['phone'];
 		} else {
-			$data['phone'] = $this->customer->getFirstName();
+			$data['phone'] = '';
 		}           
 
 		if (isset($this->request->post['email'])) {
@@ -174,10 +273,69 @@ class ControllerInformationUploadform extends Controller {
 			$data['email'] = $this->customer->getEmail();
 		}
 
-		if (isset($this->request->post['enquiry'])) {
-			$data['enquiry'] = $this->request->post['enquiry'];
+		if (isset($this->request->post['delivery'])) {
+			$data['delivery'] = $this->request->post['delivery'];
 		} else {
-			$data['enquiry'] = '';
+			$data['delivery'] = '';
+		}
+                
+		if (isset($this->request->post['order'])) {
+			$data['order'] = $this->request->post['order'];
+		} else {
+			$data['order'] = '';
+		}  
+                
+		if (isset($this->request->post['company'])) {
+			$data['company'] = $this->request->post['company'];
+		} else {
+			$data['company'] = '';
+		}  
+                
+		if (isset($this->request->post['regcom'])) {
+			$data['regcom'] = $this->request->post['regcom'];
+		} else {
+			$data['regcom'] = '';
+		} 
+                
+		if (isset($this->request->post['cif'])) {
+			$data['cif'] = $this->request->post['cif'];
+		} else {
+			$data['cif'] = '';
+		} 
+                
+		if (isset($this->request->post['adresafirma'])) {
+			$data['adresafirma'] = $this->request->post['adresafirma'];
+		} else {
+			$data['adresafirma'] = '';
+		} 
+                
+		if (isset($this->request->post['oras'])) {
+			$data['oras'] = $this->request->post['oras'];
+		} else {
+			$data['oras'] = '';
+		}
+                
+		if (isset($this->request->post['judet'])) {
+			$data['judet'] = $this->request->post['judet'];
+		} else {
+			$data['judet'] = '';
+		}
+                
+		if (isset($this->request->post['iban'])) {
+			$data['iban'] = $this->request->post['iban'];
+		} else {
+			$data['iban'] = '';
+		}
+		if (isset($this->request->post['banca'])) {
+			$data['banca'] = $this->request->post['banca'];
+		} else {
+			$data['banca'] = '';
+		}
+                
+		if (isset($this->request->post['fisier'])) {
+			$data['fisier'] = $this->request->post['fisier'];
+		} else {
+			$data['fisier'] = '';
 		}
 
 		// Captcha
@@ -204,6 +362,43 @@ class ControllerInformationUploadform extends Controller {
                 else $this->response->setOutput($this->load->view('information/uploadform', $data));
 	}
 
+	protected function upload() {
+            $target_dir = DIR_UPLOAD;
+            $target_file = $target_dir . basename($_FILES["fisier"]["name"]);
+            $uploadOk = 1;
+            $fileTypes = array("CDR", "AI", "PSD", "PDF", "EPS", "TIFF", "ZIP", "RAR", "cdr", "ai", "psd", "pdf", "eps", "tiff", "zip", "rar");
+            $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+            
+            // Check if file already exists
+            if (file_exists($target_file)) {
+                $this->error['fisier'] = "Eroare: Fisierul exista deja.";
+                $uploadOk = 0;
+            }
+            
+            // Check file size
+            if ($_FILES["fisier"]["size"] > 500000) {
+                $this->error['fisier'] = "Eroare: Dimensiunea fisierului este prea mare, limita admisa este de 50MB";
+                $uploadOk = 0;
+            }
+            
+            // Allow certain file formats
+            if (!in_array($imageFileType, $fileTypes) ) {
+                $this->error['fisier'] = "Eroare: Tipurile de fisiere permise sunt: CDR, AI, PSD, PDF, EPS, TIFF, ZIP, RAR.";
+                $uploadOk = 0;
+            }
+                        
+            if ($uploadOk == 1) {
+                if (move_uploaded_file($_FILES["fisier"]["tmp_name"], $target_file)) {
+                    $this->error['fisier'] = "Fisierul ". basename( $_FILES["fisier"]["name"]). " a fost incarcat pe serverul nostru si urmeaza sa fie verificat.";
+                    $this->uploadedFile = basename( $_FILES["fisier"]["name"]);
+                } 
+                else {
+                    echo "Eroare: Fisierul nu se poate incarca pe server. Va rugam sa incercati mai tarziu.";
+                }
+            }
+        
+        }
+        
 	protected function validate() {
 		if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 32)) {
 			$this->error['name'] = $this->language->get('error_name');
@@ -216,9 +411,18 @@ class ControllerInformationUploadform extends Controller {
 			$this->error['email'] = $this->language->get('error_email');
 		}
 
-		if ((utf8_strlen($this->request->post['enquiry']) < 10) || (utf8_strlen($this->request->post['enquiry']) > 3000)) {
-			$this->error['enquiry'] = $this->language->get('error_enquiry');
+		if ((utf8_strlen($this->request->post['delivery']) < 10) || (utf8_strlen($this->request->post['delivery']) > 3000)) {
+			$this->error['delivery'] = $this->language->get('error_delivery');
 		}
+                
+		if ((utf8_strlen($this->request->post['order']) < 10) || (utf8_strlen($this->request->post['order']) > 3000)) {
+			$this->error['order'] = $this->language->get('error_order');
+		}
+                
+                if (empty($_FILES['fisier']['name'])) {
+                    $this->error['fisier'] = $this->language->get('error_fisier');
+                }
+                else $this->upload($_FILES['fisier']);
 
 		// Captcha
 		if ($this->config->get($this->config->get('config_captcha') . '_status') && in_array('contact', (array)$this->config->get('config_captcha_page'))) {

@@ -856,7 +856,9 @@ h2.price {
 .has-error .control-label {
     color: #f37c05!important;
 }
-
 div.required .control-label:before {
     color: #f37c05!important;
+}
+#companie {
+    display: none;
 }

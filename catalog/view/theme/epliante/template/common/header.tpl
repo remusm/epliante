@@ -84,7 +84,7 @@
         <li class="fth2 <?php echo $tabModele;?>"><a href="<?php print HTTP_SERVER; ?>modele-pliante.html">MODELE</a></li>
         <li class="fth2 <?php echo $tabPortofoliu;?>"><a href="<?php print HTTP_SERVER; ?>portofoliu.html">PORTOFOLIU</a></li>
         <li class="fth2 <?php echo $tabDespre;?>"><a href="<?php print HTTP_SERVER; ?>despre-noi.html">DESPRE NOI</a></li>
-        <li class="fth2 <?php echo $tabComanda;?>"><a href="<?php print HTTP_SERVER; ?>comanda-online-pliante.html">COMANDA</a></li>
+        <li class="fth2 <?php echo $tabComanda;?>"><a href="<?php print HTTP_SERVER; ?>index.php?route=information/uploadform">COMANDA</a></li>
         <li class="fth2 <?php echo $tabContact;?>"><a href="<?php print HTTP_SERVER; ?>index.php?route=information/contact">CONTACT</a></li>
         
         
