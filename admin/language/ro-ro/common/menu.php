@@ -100,4 +100,4 @@ $_['text_openbay_report_price']        = 'Rapoarte Prețuri';
 $_['text_openbay_order_import']        = 'Importă Comenzi';
 $_['text_paypal_manage']               = 'PayPal';
 $_['text_paypal_search']               = 'Căută Tranzacţii';
-$_['text_theme']                       = 'Teme';
+$_['text_theme']                       = 'Teme'; 

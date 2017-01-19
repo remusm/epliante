@@ -4,6 +4,20 @@ class ControllerInformationUploadform extends Controller {
         private $uploadedFile;
 
 	public function index() {
+            
+                if (isset($this->request->get['id'])) $idpret = $this->request->get['id'];
+
+                // incarcam textul comenzii
+                
+		$this->load->model('catalog/preturi');
+                if (isset($idpret)) {
+                    $info_preturi = $this->model_catalog_preturi->getPreturi($idpret);
+                    $textcomanda = '';
+                    if (isset($info_preturi['tiplivrare'])) $textcomanda .= "\n".'Tip livrare: '.$info_preturi['tiplivrare']."\n";
+                    if (isset($info_preturi['produs'])) $textcomanda .= 'Produs: '.$info_preturi['produs']."\n";
+                    if (isset($info_preturi['bucati'])) $textcomanda .= 'Bucati: '.$info_preturi['bucati']."\n";
+                    if (isset($info_preturi['pret'])) $textcomanda .= 'Pret: '.$info_preturi['pret']."\n";
+                }
 		$this->load->language('information/uploadform');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -37,7 +51,7 @@ class ControllerInformationUploadform extends Controller {
                                 '<b>Nume client:</b> '.$this->request->post['name'].'<br>'.
                                 '<b>Telefon:</b> '.$this->request->post['phone'].'<br>'.
                                 '<b>Adresa livrare:</b> '.$this->request->post['delivery'].'<br>'.
-                                '<b>Comanda:</b> '.$this->request->post['order'].'<br>'.
+                                '<b>Comanda:</b> '.nl2br($this->request->post['order']).'<br>'.
                                 '<b>Newsletter:</b> '.$newsletter.'<br>'.
                                 '<b>Fisier incarcat:</b> <a href="http://e-pliante.avantondigital.com/system/storage/upload/'.$_FILES["fisier"]["name"].'">'.$_FILES["fisier"]["name"].'</a>';
                         }
@@ -48,7 +62,7 @@ class ControllerInformationUploadform extends Controller {
                                 '<b>Nume client:</b> '.$this->request->post['name'].'<br>'.
                                 '<b>Telefon:</b> '.$this->request->post['phone'].'<br>'.
                                 '<b>Adresa livrare:</b> '.$this->request->post['delivery'].'<br>'.
-                                '<b>Comanda:</b> '.$this->request->post['order'].'<br>'.
+                                '<b>Comanda:</b> '.nl2br ($this->request->post['order']).'<br>'.
                                 '<b>Denumire firma:</b> '.$this->request->post['company'].'<br>'.
                                 '<b>Reg. Com.:</b> '.$this->request->post['regcom'].'<br>'.
                                 '<b>CIF:</b> '.$this->request->post['cif'].'<br>'.
@@ -285,7 +299,9 @@ class ControllerInformationUploadform extends Controller {
 		if (isset($this->request->post['order'])) {
 			$data['order'] = $this->request->post['order'];
 		} else {
-			$data['order'] = '';
+                    if (isset($textcomanda))
+			$data['order'] = $textcomanda;
+                    else $data['order'] = '';
 		}  
                 
 		if (isset($this->request->post['company'])) {

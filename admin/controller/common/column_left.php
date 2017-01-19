@@ -117,6 +117,16 @@ class ControllerCommonColumnLeft extends Controller {
 					'children' => array()		
 				);
 			}
+                        
+                        // Preturi
+                        			
+			if ($this->user->hasPermission('access', 'catalog/preturi')) {
+				$catalog[] = array(
+					'name'	   => $this->language->get('text_preturi'),
+					'href'     => $this->url->link('catalog/preturi', 'token=' . $this->session->data['token'], true),
+					'children' => array()		
+				);
+			}
 			
 			if ($this->user->hasPermission('access', 'catalog/download')) {
 				$catalog[] = array(
