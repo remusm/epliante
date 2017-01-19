@@ -111,7 +111,51 @@ $(function() {
                 });
 
                 valid = false;
-            }            
+            }
+            
+            var x = document.getElementById("uploadFile");
+            if ('files' in x) {
+                if (x.files.length == 0) {                 
+                    document.getElementById("uploadFile").style.borderColor = "red";
+                    document.getElementById("fisier-error").style.display = "inline";
+                    document.getElementById('fisier-error').innerHTML = 'Va rugam sa alegeti un fisier.';
+                    valid = false;
+                } else {
+                    for (var i = 0; i < x.files.length; i++) {
+                        var file = x.files[i];
+                        if ('size' in file) {
+                            if (file.size>500000) {
+                                document.getElementById("uploadFile").style.borderColor = "red";
+                                document.getElementById("fisier-error").style.display = "inline";
+                                document.getElementById('fisier-error').innerHTML = 'Dimensiunea fisierului trebuie sa fie mai mica de 5MB.';
+                                valid = false;
+                            }                                                        
+                        }
+                        // check if extension is allowed
+                        var allowedExtensions = ["CDR", "AI", "PSD", "PDF", "EPS", "TIFF", "ZIP", "RAR", "cdr", "ai", "psd", "pdf", "eps", "tiff", "zip", "rar"];
+                        if ('name' in file) {
+                            fileExtension = file.name.slice((file.name.lastIndexOf(".") - 1 >>> 0) + 2);
+                            var extensieAcceptata = false;
+                            for (var j = 0; j < allowedExtensions.length; j++) {
+                                
+                                if (fileExtension == allowedExtensions[j]) {
+                                    extensieAcceptata = true;
+                                }                                
+                            }
+                            if (!extensieAcceptata) {                                
+                                document.getElementById("uploadFile").style.borderColor = "red";
+                                document.getElementById("fisier-error").style.display = "inline";
+                                document.getElementById('fisier-error').innerHTML = 'Eroare: Tipurile de fisiere permise sunt: CDR, AI, PSD, PDF, EPS, TIFF, ZIP, RAR.';
+                                valid = false;
+                            }
+                            else {                                
+                                document.getElementById("uploadFile").style.borderColor = "none";
+                                document.getElementById("fisier-error").style.display = "none";
+                            }
+                        }
+                    }
+                }
+            }             
             
             if (!valid) return false;
             
@@ -125,13 +169,18 @@ $(function() {
 		e.preventDefault();
 
 		// Serialize the form data.
-		var formData = $(form).serialize();
+		//var formData = $(form).serialize();
+                
 
 		// Submit the form using AJAX.
 		$.ajax({
-			type: 'POST',
+			type: "POST",
 			url: $(form).attr('action'),
-			data: formData,
+                        //url: "upload.php",
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+			data: new FormData(this),
                         beforeSend : function(xhr, opts){
                             if (validateOrderForm() === false)
                             {

@@ -110,7 +110,7 @@
         <div class="form-group required">    
             <label class="col-sm-2 control-label" for="input-order">Incarcati un fisier</label>            
             <div class="col-sm-10">                
-                <input type="file" name="fisier" id="uploadFile" value="" style="border:none" data="Fisier invalid!">
+                <input type="file" name="fisier" id="uploadFile" value="" style="border:none">
                 <span id="fisier-error" class="error"></span>
                 <?php if ($error_fisier) { ?>
                 <div class="text-danger"><?php echo $error_fisier; ?></div>
