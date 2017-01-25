@@ -1,7 +1,5 @@
 <?php echo $header; ?>
-<div class="container">
-    <img src="<?php echo THEME;?>/page-header/despre-noi.jpg">
-
+<div class="container">   
   <div class="row"><?php echo $column_left; ?>
     <?php if ($column_left && $column_right) { ?>
     <?php $class = 'col-sm-6'; ?>

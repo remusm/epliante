@@ -4,7 +4,7 @@
         <p> <a href="https://www.facebook.com/epliante" target="_blank">
                 <img src="<?php echo THEME;?>/facebook-ico.png" >
             </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="mailto:office@e-flyere.ro" target="_top">
+            <a href="mailto:office@e-pliante.ro" target="_top">
                 <img src="<?php echo THEME;?>/mail-ico.png" >
             </a>
         </p>

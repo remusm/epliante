@@ -75,16 +75,16 @@
             $tabModele = $tabDistributie = $tabComanda = $tabPortofoliu = $tabDespre = $tabContact = ''; 
             if ($_SERVER['REQUEST_URI'] === '/modele-pliante.html') $tabModele = 'active activat'; 
             if ($_SERVER['REQUEST_URI'] === '/distributie-flyere.html') $tabPortofoliu = 'active activat';
-            if ($_SERVER['REQUEST_URI'] === '/comanda-online-flyere.html') $tabComanda = 'active activat';
+            if ($_SERVER['REQUEST_URI'] === '/index.php?route=information/uploadform') $tabComanda = 'active activat';
             if ($_SERVER['REQUEST_URI'] === '/portofoliu.html') $tabPortofoliu = 'active activat';
             if ($_SERVER['REQUEST_URI'] === '/despre-noi.html') $tabDespre = 'active activat';
-            if ($_SERVER['REQUEST_URI'] === '/contact.html') $tabContact = 'active activat';
+            if ($_SERVER['REQUEST_URI'] === '/index.php?route=information/contact') $tabContact = 'active activat';
         ?>
 
         <li class="fth2 <?php echo $tabModele;?>"><a href="<?php print HTTP_SERVER; ?>modele-pliante.html">MODELE</a></li>
+        <li class="fth2 <?php echo $tabComanda;?>"><a href="<?php print HTTP_SERVER; ?>index.php?route=information/uploadform">COMANDA</a></li>
         <li class="fth2 <?php echo $tabPortofoliu;?>"><a href="<?php print HTTP_SERVER; ?>portofoliu.html">PORTOFOLIU</a></li>
         <li class="fth2 <?php echo $tabDespre;?>"><a href="<?php print HTTP_SERVER; ?>despre-noi.html">DESPRE NOI</a></li>
-        <li class="fth2 <?php echo $tabComanda;?>"><a href="<?php print HTTP_SERVER; ?>index.php?route=information/uploadform">COMANDA</a></li>
         <li class="fth2 <?php echo $tabContact;?>"><a href="<?php print HTTP_SERVER; ?>index.php?route=information/contact">CONTACT</a></li>
         
         

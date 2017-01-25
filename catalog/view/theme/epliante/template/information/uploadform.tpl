@@ -1,10 +1,5 @@
 <?php echo $header; ?>
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5700.428044055025!2d26.121251159682945!3d44.408253767757685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xda4af20ea594b00b!2sRestaurant+Odeon!5e0!3m2!1sro!2sro!4v1484592078086" width="100%" height="254" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
-    </div>
     
   <div class="row"><?php echo $column_left; ?>
     <?php if ($column_left && $column_right) { ?>
@@ -120,7 +115,7 @@
         <div class="form-group">
             <div class="col-sm-2"></div>
             <div class="col-sm-10">
-                <input class="btn btn-primary" type="submit" name="submit" value="<?php echo $button_submit; ?>" />
+                <input class="btn btn-danger send-btn" type="submit" name="submit" value="<?php echo $button_submit; ?>" />
             </div>
         </div>
         <?php echo $captcha; ?>

@@ -1,8 +1,9 @@
 </div>
 <div class="galerie">
   <?php foreach ($banners as $banner) { ?>
-  <div class="col-md-2 img-margin"><a href="<?php echo $banner['image']; ?>" title="<?php echo $banner['title']; ?>"> 
-          <img src="<?php echo $banner['image']; ?>" class="img-responsive imagine-galerie" title="<?php echo $banner['title']; ?>" alt="<?php echo $banner['title']; ?>" />
+  <div class="col-xs-6 col-sm-4 col-md-2 img-margin">
+      <a href="<?php echo $banner['image']; ?>" title="<?php echo $banner['title']; ?>"> 
+          <img src="<?php echo $banner['simage']; ?>" class="img-responsive imagine-galerie" title="<?php echo $banner['title']; ?>" alt="<?php echo $banner['title']; ?>" />
       </a>
   </div>
   <?php } ?>
