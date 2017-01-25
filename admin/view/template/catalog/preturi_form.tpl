@@ -84,13 +84,27 @@
           <div class="form-group">
             <label class="col-sm-2 control-label" for="input-tiplivrare"><span data-toggle="tooltip" title="<?php echo $help_tiplivrare; ?>"><?php echo $entry_tiplivrare; ?></span></label>
             <div class="col-sm-10">
-              <input type="text" name="tiplivrare" value="<?php echo $tiplivrare; ?>" placeholder="<?php echo $entry_tiplivrare; ?>" id="input-tiplivrare" class="form-control" />
+              <!--<input type="text" name="tiplivrare" value="<?php echo $tiplivrare; ?>" placeholder="<?php echo $entry_tiplivrare; ?>" id="input-tiplivrare" class="form-control" />
+              -->
+              <?php
+                $selected1 = $selected2 = '';
+                if (isset($tiplivrare)) {
+                    if($tiplivrare == 'Livrare Standard') $selected1 = 'selected';
+                    if($tiplivrare == 'Livrare Express') $selected2 = 'selected';
+                }
+              ?>
+              <select name="tiplivrare" id="input-tiplivrare" class="form-control">
+                    <option value="">Alegeti..</option>
+                    <option value="Livrare Standard" <?php echo $selected1;?> >Livrare Standard</option>
+                    <option value="Livrare Express" <?php echo $selected2;?> >Livrare Express</option>
+              </select>
+              
               <?php if ($error_tiplivrare) { ?>
               <div class="text-danger"><?php echo $error_tiplivrare; ?></div>
               <?php } ?>
             </div>
           </div>
-          <div class="form-group">
+          <!--<div class="form-group">
             <label class="col-sm-2 control-label" for="input-textcomanda"><?php echo $entry_textcomanda; ?></label>
             <div class="col-sm-10">
               <input type="text" name="textcomanda" value="<?php echo $textcomanda; ?>" placeholder="<?php echo $entry_textcomanda; ?>" id="input-textcomanda" class="form-control" />
@@ -99,7 +113,7 @@
               <?php } ?>
             </div>
           </div>
-          <div class="form-group">
+          <!--<div class="form-group">
             <label class="col-sm-2 control-label" for="input-produs"><?php echo $entry_produs; ?></label>
             <div class="col-sm-10">
               <input type="text" name="produs" value="<?php echo $produs; ?>" placeholder="<?php echo $entry_produs; ?>" id="input-produs" class="form-control" />
@@ -107,7 +121,7 @@
               <div class="text-danger"><?php echo $error_produs; ?></div>
               <?php } ?>
             </div>
-          </div>
+          </div>-->
           <div class="form-group">
             <label class="col-sm-2 control-label" for="input-bucati"><?php echo $entry_bucati; ?></label>
             <div class="col-sm-10">
@@ -126,12 +140,12 @@
               <?php } ?>
             </div>
           </div>
-          <div class="form-group">
+          <!--<div class="form-group">
             <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
             <div class="col-sm-10">
               <input type="text" name="sort_order" value="<?php echo $sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
             </div>
-          </div>
+          </div>-->
         </form>
       </div>
     </div>

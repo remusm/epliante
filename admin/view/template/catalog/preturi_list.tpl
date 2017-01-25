@@ -40,6 +40,10 @@
                     <?php } else { ?>
                     <a href="<?php echo $sort_name; ?>"><?php echo $column_name; ?></a>
                     <?php } ?></td>
+                  <td class="text-right"><?php echo $tiplivrare; ?></td>
+                  <td class="text-right"><?php echo $bucati; ?></td>
+                  <td class="text-right"><?php echo $pret; ?></td>
+                  <td class="text-right">Link comanda</td>
                   <td class="text-right"><?php if ($sort == 'sort_order') { ?>
                     <a href="<?php echo $sort_sort_order; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_sort_order; ?></a>
                     <?php } else { ?>
@@ -58,6 +62,10 @@
                     <input type="checkbox" name="selected[]" value="<?php echo $preturi['preturi_id']; ?>" />
                     <?php } ?></td>
                   <td class="text-left"><?php echo $preturi['name']; ?></td>
+                  <td class="text-right"><?php echo $preturi['tiplivrare']; ?></td>
+                  <td class="text-right"><?php echo $preturi['bucati']; ?></td>
+                  <td class="text-right"><?php echo $preturi['pret']; ?></td>
+                  <td class="text-right">http://e-pliante.avantondigital.com/index.php?id=<?php echo $preturi['preturi_id'];?>&route=information/uploadform</td>
                   <td class="text-right"><?php echo $preturi['sort_order']; ?></td>
                   <td class="text-right"><a href="<?php echo $preturi['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
                 </tr>

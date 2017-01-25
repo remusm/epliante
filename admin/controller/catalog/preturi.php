@@ -122,6 +122,29 @@ class ControllerCatalogPreturi extends Controller {
 		} else {
 			$order = 'ASC';
 		}
+                                
+		if (isset($this->request->get['tiplivrare'])) {
+			$tiplivrare = $this->request->get['tiplivrare'];
+		} else {
+			$tiplivrare = 'Tip Livrare';
+		}         
+                
+		if (isset($this->request->get['bucati'])) {
+			$bucati = $this->request->get['bucati'];
+		} else {
+			$bucati = 'bucati';
+		}             
+		if (isset($this->request->get['pret'])) {
+			$pret = $this->request->get['pret'];
+		} else {
+			$pret = 'Pret';
+		}        
+                
+		if (isset($this->request->get['preturi_id'])) {
+			$preturi_id = $this->request->get['preturi_id'];
+		} else {
+			$preturi_id = '';
+		}
 
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
@@ -137,7 +160,9 @@ class ControllerCatalogPreturi extends Controller {
 
 		if (isset($this->request->get['order'])) {
 			$url .= '&order=' . $this->request->get['order'];
-		}
+		} else {                    
+                    $url .= '&order=ASC';
+                }
 
 		if (isset($this->request->get['page'])) {
 			$url .= '&page=' . $this->request->get['page'];
@@ -163,6 +188,10 @@ class ControllerCatalogPreturi extends Controller {
 		$filter_data = array(
 			'sort'  => $sort,
 			'order' => $order,
+                        'tiplivrare' => $tiplivrare,
+                        'bucati' => $bucati,
+                        'pret' => $pret,
+                        'preturi_id'    => $preturi_id,
 			'start' => ($page - 1) * $this->config->get('config_limit_admin'),
 			'limit' => $this->config->get('config_limit_admin')
 		);
@@ -175,6 +204,10 @@ class ControllerCatalogPreturi extends Controller {
 			$data['listapreturi'][] = array(
 				'preturi_id' => $result['preturi_id'],
 				'name'            => $result['name'],
+				'tiplivrare'            => $result['tiplivrare'],
+				'bucati'            => $result['bucati'],
+				'pret'            => $result['pret'],
+				'preturi_id'            => $result['preturi_id'],
 				'sort_order'      => $result['sort_order'],
 				'edit'            => $this->url->link('catalog/preturi/edit', 'token=' . $this->session->data['token'] . '&preturi_id=' . $result['preturi_id'] . $url, true)
 			);
@@ -216,6 +249,10 @@ class ControllerCatalogPreturi extends Controller {
 
 		$url = '';
 
+                if (!isset($order)) {
+                    $order = 'ASC';
+                }
+                
 		if ($order == 'ASC') {
 			$url .= '&order=DESC';
 		} else {
@@ -251,6 +288,10 @@ class ControllerCatalogPreturi extends Controller {
 
 		$data['sort'] = $sort;
 		$data['order'] = $order;
+                $data['tiplivrare'] = $tiplivrare;
+                $data['bucati'] = $bucati;
+                $data['pret'] = $pret;
+                $data['preturi_id'] = $preturi_id;
 
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');

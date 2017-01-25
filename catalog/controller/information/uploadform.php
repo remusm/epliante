@@ -14,9 +14,9 @@ class ControllerInformationUploadform extends Controller {
                     $info_preturi = $this->model_catalog_preturi->getPreturi($idpret);
                     $textcomanda = '';
                     if (isset($info_preturi['tiplivrare'])) $textcomanda .= "\n".'Tip livrare: '.$info_preturi['tiplivrare']."\n";
-                    if (isset($info_preturi['produs'])) $textcomanda .= 'Produs: '.$info_preturi['produs']."\n";
+                    if (isset($info_preturi['produs'])) $textcomanda .= 'Produs: '.$info_preturi['name']."\n";
                     if (isset($info_preturi['bucati'])) $textcomanda .= 'Bucati: '.$info_preturi['bucati']."\n";
-                    if (isset($info_preturi['pret'])) $textcomanda .= 'Pret: '.$info_preturi['pret']."\n";
+                    if (isset($info_preturi['pret'])) $textcomanda .= 'Pret: '.$info_preturi['pret']." Lei\n";
                 }
 		$this->load->language('information/uploadform');
 
