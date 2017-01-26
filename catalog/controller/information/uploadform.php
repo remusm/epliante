@@ -474,8 +474,8 @@ class ControllerInformationUploadform extends Controller {
                             $this->error['captcha'] = $captcha;
                     }
             }
-
-            if ($validForm && $validUpload)
+           
+            if ($validForm == 1 && $validUpload)
                 return true;
             else return false;
 	}

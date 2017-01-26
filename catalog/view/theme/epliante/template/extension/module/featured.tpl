@@ -13,10 +13,10 @@
 </div>
 
 <div class="box-right">
-  <h2><a href=" ">Distributie</a></h2>
+  <h2><a href="<?php echo HTTP_SERVER;?>distributie-pliante.html ">Distributie</a></h2>
   <img src="<?php echo THEME;?>/distributie-icon.png">
   <p class="featured-text">Mauris accuml dia in lacus edipiscng aliqIn pdeiquetsit amet euis inuctor ut liguliquam dapibus tindu.</p>
-  <p><a class="buton-detalii" href="">VEZI DETALII</a></p>
+  <p><a class="buton-detalii" href="<?php echo HTTP_SERVER;?>distributie-pliante.html">VEZI DETALII</a></p>
 </div>
 <div style="clear:both;"></div>
 <hr class="divider-line-2">
@@ -42,5 +42,5 @@
     </div>    
 </div>
 <div class="text-center">
-    <a href="" class="buton-contact">CONTACTEAZA-NE</a>
+    <a href="http://e-pliante.avantondigital.com/index.php?route=information/contact" class="buton-contact">CONTACTEAZA-NE</a>
 </div>
