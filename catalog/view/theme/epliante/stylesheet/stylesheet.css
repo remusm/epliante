@@ -109,11 +109,11 @@ div.required .control-label:before {
 }
 /* logo */
 #logo {
-    width: 240px;
-    background-color: #03274a;
+    /*width: 240px;
+    background-color: #03274a;*/
     text-align: center;
-    margin: 0 auto 20px auto;
-    padding: 10px 0;
+    margin: 25px auto 25px auto;
+    /*padding: 20px 0 10px 0;*/
 }
 /* menu */
 /* pagina curenta din meniu */
@@ -842,6 +842,7 @@ h2.price {
 .error {
     color: #f37c05;
     font-size: 14px;
+    font-weight: bold;
 }
 .alert-success {
     background-color: #65aa65;

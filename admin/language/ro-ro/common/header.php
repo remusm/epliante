@@ -21,3 +21,5 @@ $_['text_homepage']        = 'Pagina de start';
 $_['text_support']         = 'Forum OpenCart';
 $_['text_documentation']   = 'Documentație';
 $_['text_logout']          = 'Deconectare';
+$_['text_preturi']         = 'Preturi';
+$_['text_information']     = 'Pagini Informaţii';

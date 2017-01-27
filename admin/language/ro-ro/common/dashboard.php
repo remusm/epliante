@@ -18,6 +18,7 @@ $_['text_week']                    = 'Săptămâna';
 $_['text_month']                   = 'Luna';
 $_['text_year']                    = 'Anul';
 $_['text_view']                    = 'Vezi mai multe...';
+$_['text_information']                 = 'Pagini Informaţii';
 
 // Error
 $_['error_install']                = 'Avertisment: Folderul de instalare încă există și trebuie să fie eliminat din motive de securitate!';

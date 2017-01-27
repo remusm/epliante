@@ -397,7 +397,7 @@ class ControllerInformationUploadform extends Controller {
             
             // Check file size
             if (isset($_FILES["fisier"]["size"])) {
-                if ($_FILES["fisier"]["size"] > 500000) {
+                if ($_FILES["fisier"]["size"] > 419430400) {
                     $this->error['fisier'] = "Eroare: Dimensiunea fisierului este prea mare, limita admisa este de 50MB";
                     $uploadOk = 0;
                 }

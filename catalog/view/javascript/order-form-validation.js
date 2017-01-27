@@ -16,7 +16,7 @@ $(function() {
             var regexp_email	= /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
             
             if (name == '' ) {
-                document.getElementById("input-name").style.borderColor = "red";
+                document.getElementById("input-name").style.borderColor = "#f37c05";
                 document.getElementById("name-error").style.display = "inline";
                 document.getElementById('name-error').innerHTML = 'Va rugam sa introduceti numele dumneavoastra';
 
@@ -29,7 +29,7 @@ $(function() {
                 valid = false;
             }
             if (name.length < 3 || name.length > 32 ) {
-                document.getElementById("input-name").style.borderColor = "red";
+                document.getElementById("input-name").style.borderColor = "#f37c05";
                 document.getElementById("name-error").style.display = "inline";
                 document.getElementById('name-error').innerHTML = 'Va rugam sa introduceti numele dumneavoastra. Numele poate avea intre 3 si 32 de caractere';
 
@@ -43,7 +43,7 @@ $(function() {
             }            
                         
             if (email == '' ) {
-                document.getElementById("input-email").style.borderColor = "red";
+                document.getElementById("input-email").style.borderColor = "#f37c05";
                 document.getElementById("email-error").style.display = "inline";
                 document.getElementById('email-error').innerHTML = 'Va rugam sa introduceti o adresa de email';
 
@@ -57,7 +57,7 @@ $(function() {
             }
             
             if (email.search(regexp_email) == - 1 && email.trim !== email) {
-                document.getElementById("input-email").style.borderColor = "red";
+                document.getElementById("input-email").style.borderColor = "#f37c05";
                 document.getElementById("email-error").style.display = "inline";
                 document.getElementById('email-error').innerHTML = 'Va rugam sa introduceti o adresa de email valida';
 
@@ -72,7 +72,7 @@ $(function() {
             }
                         
             if (phone.length < 3 || phone.length > 15 ) {
-                document.getElementById("input-phone").style.borderColor = "red";
+                document.getElementById("input-phone").style.borderColor = "#f37c05";
                 document.getElementById("phone-error").style.display = "inline";
                 document.getElementById('phone-error').innerHTML = 'Va rugam sa introduceti un telefon de contact. Numarul poate avea intre 3 si 15 cifre.';
 
@@ -86,7 +86,7 @@ $(function() {
             }
             
             if (delivery.length < 10 || delivery.length > 300) {
-                document.getElementById("input-delivery").style.borderColor = "red";
+                document.getElementById("input-delivery").style.borderColor = "#f37c05";
                 document.getElementById("delivery-error").style.display = "inline";
                 document.getElementById('delivery-error').innerHTML = 'Va rugam sa introduceti adresa de livrare. Aceasta poatea avea intre 10 si 300 de caractere.';
 
@@ -100,7 +100,7 @@ $(function() {
             }
 
             if (order.length < 10 || order.length > 300) {
-                document.getElementById("input-order").style.borderColor = "red";
+                document.getElementById("input-order").style.borderColor = "#f37c05";
                 document.getElementById("order-error").style.display = "inline";
                 document.getElementById('order-error').innerHTML = 'Va rugam sa introduceti comanda dumneavoastra. Aceasta poate avea intre 10 si 300 de caractere.';
 
@@ -116,7 +116,7 @@ $(function() {
             var x = document.getElementById("uploadFile");
             if ('files' in x) {
                 if (x.files.length == 0) {                 
-                    document.getElementById("uploadFile").style.borderColor = "red";
+                    document.getElementById("uploadFile").style.borderColor = "#f37c05";
                     document.getElementById("fisier-error").style.display = "inline";
                     document.getElementById('fisier-error').innerHTML = 'Va rugam sa alegeti un fisier.';
                     valid = false;
@@ -125,9 +125,9 @@ $(function() {
                         var file = x.files[i];
                         if ('size' in file) {
                             
-                            if (file.size>500000) {
+                            if (file.size>419430400) {
                                 
-                                document.getElementById("uploadFile").style.borderColor = "red";
+                                document.getElementById("uploadFile").style.borderColor = "#f37c05";
                                 document.getElementById("fisier-error").style.display = "inline";
                                 document.getElementById('fisier-error').innerHTML = 'Eroare: Fisierul depaseste 5MB';
                                 valid = false;
@@ -145,7 +145,7 @@ $(function() {
                                 }                                
                             }
                             if (!extensieAcceptata) {                                
-                                document.getElementById("uploadFile").style.borderColor = "red";
+                                document.getElementById("uploadFile").style.borderColor = "#f37c05";
                                 document.getElementById("fisier-error").style.display = "inline";
                                 document.getElementById('fisier-error').innerHTML = 'Eroare: Tipurile de fisiere permise sunt: CDR, AI, PSD, PDF, EPS, TIFF, ZIP, RAR.';
                                 valid = false;
