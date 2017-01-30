@@ -22,6 +22,16 @@
 <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
+
+<!-- styles needed by jScrollPane -->
+<link type="text/css" href="catalog/view/theme/epliante/stylesheet/jquery.jscrollpane.css" rel="stylesheet" media="all" />
+
+<!-- the mousewheel plugin - optional to provide mousewheel support -->
+<script type="text/javascript" src="catalog/view/javascript/jquery.mousewheel.js"></script>
+
+<!-- the jScrollPane script -->
+<script type="text/javascript" src="catalog/view/javascript/jquery.jscrollpane.min.js"></script>
+
 <link href="catalog/view/theme/epliante/stylesheet/stylesheet.css" rel="stylesheet">
 <?php foreach ($styles as $style) { ?>
 <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
@@ -87,7 +97,7 @@
         <li class="fth2 <?php echo $tabFlyere;?>"><a href="<?php print HTTP_SERVER; ?>flyere.html">PRETURI FLYERE</a></li>
         <li class="fth2 <?php echo $tabModele;?>"><a href="<?php print HTTP_SERVER; ?>modele-pliante.html">MODELE</a></li>
         <li class="fth2 <?php echo $tabComanda;?>"><a href="<?php print HTTP_SERVER; ?>index.php?route=information/uploadform">COMANDA</a></li>
-        <li class="fth2 <?php echo $tabPortofoliu;?>"><a href="<?php print HTTP_SERVER; ?>portofoliu.html">PORTOFOLIU</a></li>
+        <!--<li class="fth2 <?php echo $tabPortofoliu;?>"><a href="<?php print HTTP_SERVER; ?>portofoliu.html">PORTOFOLIU</a></li>-->
         <li class="fth2 <?php echo $tabDespre;?>"><a href="<?php print HTTP_SERVER; ?>despre-noi.html">DESPRE NOI</a></li>
         <li class="fth2 <?php echo $tabContact;?>"><a href="<?php print HTTP_SERVER; ?>index.php?route=information/contact">CONTACT</a></li>
         

@@ -89,7 +89,8 @@
           </fieldset>
           <div class="buttons">
             <div class="pull-right">
-              <input class="btn btn-danger send-btn" type="submit" value="<?php echo $button_submit; ?>" />
+              <div id="loader" class="loader"></div>
+              <input class="btn send-btn" type="submit" value="<?php echo $button_submit; ?>" />  
             </div>
           </div>
         </form>

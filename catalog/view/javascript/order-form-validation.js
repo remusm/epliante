@@ -13,7 +13,13 @@ $(function() {
             var phone = $("#input-phone").val();
             var delivery = $("#input-delivery").val();
             var order = $("#input-order").val();
-            var regexp_email	= /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
+            var regexp_email	= /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;      
+            
+            var company = $("#input-company").val();
+            var regcom = $("#input-regcom").val();
+            var cif = $("#input-cif").val();
+            var adresafirma = $("#input-adresafirma").val();
+            var oras = $("#input-oras").val();
             
             if (name == '' ) {
                 document.getElementById("input-name").style.borderColor = "#f37c05";
@@ -153,7 +159,78 @@ $(function() {
                         }
                     }
                 }
-            }             
+            }
+            
+            // validari pentru persoana juridica            
+            if (document.getElementById('juridica').checked) {
+                            
+                if (company == '' ) {
+                    document.getElementById("input-company").style.borderColor = "#f37c05";
+                    document.getElementById("company-error").style.display = "inline";
+                    document.getElementById('company-error').innerHTML = 'Va rugam sa introduceti denumriea firmei';
+
+                    $("#input-company").focus(function() {
+
+                            $("#company-error").fadeOut(2000);
+                            $("#input-company").css("border", "1px solid #d5d5d5");
+                    });
+
+                    valid = false;
+                }                          
+                if (regcom == '' ) {
+                    document.getElementById("input-regcom").style.borderColor = "#f37c05";
+                    document.getElementById("regcom-error").style.display = "inline";
+                    document.getElementById('regcom-error').innerHTML = 'Va rugam sa introduceti numarul de inregistrare la Registrul Comertului';
+
+                    $("#input-regcom").focus(function() {
+
+                            $("#regcom-error").fadeOut(2000);
+                            $("#input-regcom").css("border", "1px solid #d5d5d5");
+                    });
+
+                    valid = false;
+                }                          
+                if (cif == '' ) {
+                    document.getElementById("input-cif").style.borderColor = "#f37c05";
+                    document.getElementById("cif-error").style.display = "inline";
+                    document.getElementById('cif-error').innerHTML = 'Va rugam sa introduceti codul fiscal al firmei';
+
+                    $("#input-cif").focus(function() {
+
+                            $("#cif-error").fadeOut(2000);
+                            $("#input-cif").css("border", "1px solid #d5d5d5");
+                    });
+
+                    valid = false;
+                }                       
+                if (adresafirma == '' ) {
+                    document.getElementById("input-adresafirma").style.borderColor = "#f37c05";
+                    document.getElementById("adresafirma-error").style.display = "inline";
+                    document.getElementById('adresafirma-error').innerHTML = 'Va rugam sa introduceti adresa sediului social';
+
+                    $("#input-adresafirma").focus(function() {
+
+                            $("#adresafirma-error").fadeOut(2000);
+                            $("#input-adresafirma").css("border", "1px solid #d5d5d5");
+                    });
+
+                    valid = false;
+                }                       
+                if (oras == '' ) {
+                    document.getElementById("input-oras").style.borderColor = "#f37c05";
+                    document.getElementById("oras-error").style.display = "inline";
+                    document.getElementById('oras-error').innerHTML = 'Va rugam sa introduceti orasul';
+
+                    $("#input-oras").focus(function() {
+
+                            $("#oras-error").fadeOut(2000);
+                            $("#input-oras").css("border", "1px solid #d5d5d5");
+                    });
+
+                    valid = false;
+                }
+            }
+                
             
             if (!valid) return false;
             
@@ -168,7 +245,7 @@ $(function() {
 
 		// Serialize the form data.
 		//var formData = $(form).serialize();
-                
+                //
 
 		// Submit the form using AJAX.
 		$.ajax({
@@ -180,9 +257,14 @@ $(function() {
                         processData: false,
 			data: new FormData(this),
                         beforeSend : function(xhr, opts){
+                            
                             if (validateOrderForm() === false)
                             {
                                 xhr.abort();
+                            }
+                            else {
+                            //show the loading sign
+                            document.getElementById("loader").style.display = "inline-block";
                             }
                         }
 		})

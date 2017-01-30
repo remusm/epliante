@@ -79,7 +79,7 @@ class ControllerInformationUploadform extends Controller {
                         try {
                             $mail->send();
                             // Set a 200 (okay) response code.                            
-                            echo 'Mesajul tău a fost trimis cu succes către administratorul site-ului!';
+                            echo 'Comanda ta a fost trimisa cu succes!';
                         }
                           //catch exception
                         catch(Exception $e) {

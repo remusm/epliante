@@ -29,7 +29,7 @@ class ControllerInformationContact extends Controller {
                             $mail->send();
                             // Set a 200 (okay) response code.
                             
-                            echo 'Mesajul tău a fost trimis cu succes către administratorul site-ului!';
+                            echo 'Mesajul tau a fost trimis cu succes!';
                             //$this->response->redirect($this->url->link('information/contact/success'));
                         }
                           //catch exception

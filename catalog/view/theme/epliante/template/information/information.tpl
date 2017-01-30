@@ -14,4 +14,10 @@
       <?php echo $description; ?><?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
 </div>
+<script>
+$(function()
+{
+	$('.table-responsive').jScrollPane();
+});
+</script>
 <?php echo $footer; ?>

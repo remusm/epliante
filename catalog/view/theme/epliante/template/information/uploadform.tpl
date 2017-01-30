@@ -56,16 +56,16 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-10">
                 <div class="radio" style="float: left; margin-right: 20px;">
-                    <label><input type="radio" name="optradio" onclick="javascript:hideCompanyInfo();" checked value="fizica">Persoana fizica</label>
+                    <label><input type="radio" name="optradio" id="fizica" onclick="javascript:hideCompanyInfo();" checked value="fizica">Persoana fizica</label>
                 </div>
                 <div class="radio" style="float: left;">
-                    <label><input type="radio" name="optradio" onclick="javascript:showCompanyInfo();" value="juridica">Persoana juridica</label>
+                    <label><input type="radio" name="optradio" id="juridica" onclick="javascript:showCompanyInfo();" value="juridica">Persoana juridica</label>
                 </div>
             </div>
         </div>    
             <script type="text/javascript">
                 function showCompanyInfo() {                        
-                    document.getElementById("companie").style.display = "inline";
+                    document.getElementById("companie").style.display = "block";
                 }
                 function hideCompanyInfo() {                        
                     document.getElementById("companie").style.display = "none";
@@ -111,15 +111,8 @@
                 <div class="text-danger"><?php echo $error_fisier; ?></div>
                 <?php } ?>
             </div>
-        </div>      
-        <div class="form-group">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-10">
-                <input class="btn btn-danger send-btn" type="submit" name="submit" value="<?php echo $button_submit; ?>" />
-            </div>
-        </div>
-        <?php echo $captcha; ?>
-      </fieldset>
+        </div>   
+        </fieldset>
         <fieldset id="companie" class="col-md-6">
         <div class="form-group">
             <label class="col-sm-2 control-label" for="input-company"><?php echo $entry_company; ?></label>
@@ -247,8 +240,20 @@
             </div>
         </div>
         <?php echo $captcha; ?>
-      </fieldset>            
-      <div class="col-md-12">          
+      </fieldset>         
+    <fieldset id="persoana-fizica" class="col-md-12">
+        <div class="form-group">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <input class="btn send-btn" type="submit" name="submit" value="<?php echo $button_submit; ?>" />    
+                <div id="loader" class="loader"></div>
+            </div>
+        </div>
+
+        <?php echo $captcha; ?>
+    </fieldset>   
+      <div class="col-md-12">    
+          <br><br>
         <p>Cerinte tehnice pentru fisierele uploadate de dvs:</p><p><br></p><p>- Fisierele trimise de dvs nu trebuie sa depaseasca 50 Mb. Daca aveti fisiere mai mari va rugam sa ne contactati sau sa trimiteti comanda printr-un site de file transfer.</p><p>- Doar urmatoarele formate sunt acceptate pentru upload: CDR, AI, PSD, PDF, EPS, TIFF, ZIP, RAR. Nu incercati alte formate gen JPG, DOC, PPS, etc pentru ca nu le veti putea trimite.</p><p>- Rezolutia minima: 300 dpi.</p><p>- Layout-ul trebuie sa contina un BLEED de 3mm pe contur fata de formatul finit dorit.</p><p>- Textele si pozele folosite in layout sa fie convertite la CMYK.</p><p>- De asemenea, fonturile trebuiesc convertite la curbe.</p><p><br></p>
 
         <p>ATENTIE!</p><p>Tiparim exact fisierul pe care ni-l trimiteti! De aceea va rugam sa verificati cerintele tehnice de mai sus inainte de a ne trimite fisierele.&nbsp;</p><p>Multumim pentru intelegere.</p>

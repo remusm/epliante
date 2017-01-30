@@ -122,6 +122,10 @@ $(function() {
                             {
                                 xhr.abort();
                             }
+                            else {
+                            //show the loading sign
+                            document.getElementById("loader").style.display = "inline-block";
+                            }
                         }
 		})
 		.done(function(response) {
