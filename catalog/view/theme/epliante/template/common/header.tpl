@@ -82,11 +82,11 @@
       <ul class="nav navbar-nav">
         
         <?php
-            $tabModele = $tabDistributie = $tabComanda = $tabPortofoliu = $tabDespre = $tabContact = ''; 
+            $tabModele = $tabDistributie = $tabComanda = $tabPortofoliu = $tabDespre = $tabContact = $tabDistributie = ''; 
             if ($_SERVER['REQUEST_URI'] === '/preturi-pliante.html') $tabPliante = 'active activat'; 
             if ($_SERVER['REQUEST_URI'] === '/flyere.html') $tabFlyere = 'active activat'; 
             if ($_SERVER['REQUEST_URI'] === '/modele-pliante.html') $tabModele = 'active activat'; 
-            if ($_SERVER['REQUEST_URI'] === '/distributie-flyere.html') $tabPortofoliu = 'active activat';
+            if ($_SERVER['REQUEST_URI'] === '/distributie-pliante.html') $tabDistributie = 'active activat';
             if ($_SERVER['REQUEST_URI'] === '/index.php?route=information/uploadform') $tabComanda = 'active activat';
             if ($_SERVER['REQUEST_URI'] === '/portofoliu.html') $tabPortofoliu = 'active activat';
             if ($_SERVER['REQUEST_URI'] === '/despre-noi.html') $tabDespre = 'active activat';
@@ -95,6 +95,7 @@
 
         <li class="fth2 <?php echo $tabPliante;?>"><a href="<?php print HTTP_SERVER; ?>preturi-pliante.html">PRETURI PLIANTE</a></li>
         <li class="fth2 <?php echo $tabFlyere;?>"><a href="<?php print HTTP_SERVER; ?>flyere.html">PRETURI FLYERE</a></li>
+        <li class="fth2 <?php echo $tabDistributie;?>"><a href="<?php print HTTP_SERVER; ?>distributie-pliante.html">DISTRIBUTIE</a></li>
         <li class="fth2 <?php echo $tabModele;?>"><a href="<?php print HTTP_SERVER; ?>modele-pliante.html">MODELE</a></li>
         <li class="fth2 <?php echo $tabComanda;?>"><a href="<?php print HTTP_SERVER; ?>index.php?route=information/uploadform">COMANDA</a></li>
         <!--<li class="fth2 <?php echo $tabPortofoliu;?>"><a href="<?php print HTTP_SERVER; ?>portofoliu.html">PORTOFOLIU</a></li>-->

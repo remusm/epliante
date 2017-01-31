@@ -432,7 +432,7 @@ class ControllerInformationUploadform extends Controller {
             }
             if(isset($this->request->post['phone'])) {
                 if($this->request->post['phone']) {
-                    if ((utf8_strlen($this->request->post['phone']) < 3) || (utf8_strlen($this->request->post['phone']) > 15)) {
+                    if ((utf8_strlen($this->request->post['phone']) != 10)) {
                             $this->error['phone'] = $this->language->get('error_phone');
                             $validForm = 3;
                     }

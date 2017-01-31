@@ -1,8 +1,8 @@
 body {
-	font-family: 'Open Sans', sans-serif;
+	font-family: Tahoma, Geneva, sans-serif;
 	font-weight: 300;
 	color: #fff;
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 20px;
 	width: 100%;
         background-color: #1c1a27;
@@ -53,13 +53,16 @@ label {
 }
 select.form-control, textarea.form-control, input[type="text"].form-control, input[type="password"].form-control, input[type="datetime"].form-control, input[type="datetime-local"].form-control, input[type="date"].form-control, input[type="month"].form-control, input[type="time"].form-control, input[type="week"].form-control, input[type="number"].form-control, input[type="email"].form-control, input[type="url"].form-control, input[type="search"].form-control, input[type="tel"].form-control, input[type="color"].form-control {
 	font-size: 12px;
+        color: #000!important;
 }
 .input-group input, .input-group select, .input-group .dropdown-menu, .input-group .popover {
 	font-size: 12px;
+        color: #000!important;
 }
 .input-group .input-group-addon {
 	font-size: 12px;
 	height: 30px;
+        color: #000!important;
 }
 /* Fix some bootstrap issues */
 span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
@@ -885,7 +888,12 @@ div.required .control-label:before {
     font-size: 14px;
     font-weight: bold;
     background-color: #e66200;
-    border: none;
+    border: none;fb6c01
+}
+
+.send-btn:hover {
+    color: #fff;
+    background-color: #fb6c01;
 }
 
 .bloc {
@@ -899,7 +907,6 @@ div.required .control-label:before {
 }
 
 .table {
-    font-size: 16px!important;
     color: #fff!important;
     text-align: center;
 }
@@ -908,8 +915,13 @@ div.required .control-label:before {
     background-color: #d26900;
     color: #fff;
     border-radius: 2px;
-    padding: 3px 5px;
-    font-size: 14px;
+    padding: 2px 3px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.table p {
+    margin: 0;
 }
 /* Ajax forms loader */
 .loader {

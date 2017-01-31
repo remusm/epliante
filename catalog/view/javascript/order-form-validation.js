@@ -77,10 +77,10 @@ $(function() {
                 
             }
                         
-            if (phone.length < 3 || phone.length > 15 ) {
+            if (phone.length != 10 ) {
                 document.getElementById("input-phone").style.borderColor = "#f37c05";
                 document.getElementById("phone-error").style.display = "inline";
-                document.getElementById('phone-error').innerHTML = 'Va rugam sa introduceti un telefon de contact. Numarul poate avea intre 3 si 15 cifre.';
+                document.getElementById('phone-error').innerHTML = 'Va rugam sa introduceti un telefon de contact format din 10 cifre.';
 
                 $("#input-phone").focus(function() {
 
